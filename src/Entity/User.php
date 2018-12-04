@@ -121,15 +121,11 @@ class User implements UserInterface, \Serializable
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): void
+    public function setRoles(Role ...$roles): void
     {
         $this->roles = [];
 
         foreach ($roles as $role) {
-            if (!$role instanceof Role) {
-                throw new \LogicException('What is happening?!?!?!?');
-            }
-
             $this->roles[] = (string) $role;
         }
     }

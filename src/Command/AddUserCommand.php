@@ -157,7 +157,7 @@ class AddUserCommand extends Command
         $user->setFullName($fullName);
         $user->setUsername($username);
         $user->setEmail($email);
-        $user->setRoles([$isAdmin ? new AdminRole() : new UserRole()]);
+        $user->setRoles($isAdmin ? new AdminRole() : new UserRole());
 
         // See https://symfony.com/doc/current/book/security.html#security-encoding-password
         $encodedPassword = $this->passwordEncoder->encodePassword($user, $plainPassword);
